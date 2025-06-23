@@ -1,5 +1,7 @@
 package com.gundogar.todoappmeg
 
+import kotlinx.coroutines.flow.Flow
+
 interface TodosRepository {
 
     suspend fun save(name: String)
@@ -8,7 +10,7 @@ interface TodosRepository {
 
     suspend fun delete(todo: Todo)
 
-    suspend fun getTodos(): List<Todo>
+    fun getTodos(): Flow<List<Todo>>
 
     suspend fun search(query: String): List<Todo>
 

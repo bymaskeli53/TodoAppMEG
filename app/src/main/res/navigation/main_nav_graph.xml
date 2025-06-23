@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.gundogar.todoappmeg.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_saveFragment"
+            app:destination="@id/saveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/saveFragment"
+        android:name="com.gundogar.todoappmeg.SaveFragment"
+        android:label="fragment_save"
+        tools:layout="@layout/fragment_save" />
 </navigation>

@@ -1,5 +1,6 @@
 package com.gundogar.todoappmeg
 
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class TodosRepositoryImpl @Inject constructor(val todoDao: TodoDao) : TodosRepository {
@@ -15,7 +16,7 @@ class TodosRepositoryImpl @Inject constructor(val todoDao: TodoDao) : TodosRepos
         todoDao.delete(todo)
     }
 
-    override suspend fun getTodos(): List<Todo> {
+    override fun getTodos(): Flow<List<Todo>> {
         return todoDao.getTodos()
     }
 
