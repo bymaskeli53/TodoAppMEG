@@ -21,7 +21,7 @@ object AppModule {
         return Room.databaseBuilder(
             context,
             TodoDatabase::class.java,
-            "todo_database",).build()
+            "todo_database").build()
     }
 
 
