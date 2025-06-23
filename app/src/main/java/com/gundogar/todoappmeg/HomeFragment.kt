@@ -34,7 +34,9 @@ class HomeFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.todos.collect { todos ->
-                    binding.recyclerViewToDos.adapter = TodoAdapter(todos)
+                    binding.recyclerViewToDos.adapter = TodoAdapter(todos){
+                        viewModel.deleteTodo(it)
+                    }
                 }
 
             }

@@ -6,6 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,5 +18,12 @@ class HomeViewModel @Inject constructor(val todosRepository: TodosRepository) : 
             SharingStarted.WhileSubscribed(5000),
             emptyList()
         )
+
+    fun deleteTodo(todo: Todo) {
+        viewModelScope.launch {
+            todosRepository.delete(todo)
+        }
+
+    }
 
 }

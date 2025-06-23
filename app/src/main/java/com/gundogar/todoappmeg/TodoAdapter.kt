@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.gundogar.todoappmeg.databinding.ItemTodoBinding
 
-class TodoAdapter(var toDosList: List<Todo>)
+class TodoAdapter(var toDosList: List<Todo>,val onDeleteClick: (Todo) -> Unit)
     : RecyclerView.Adapter<TodoAdapter.CardDesignHolder>() {
 
     inner class CardDesignHolder(var binding: ItemTodoBinding) : RecyclerView.ViewHolder(binding.root)
@@ -28,16 +28,20 @@ class TodoAdapter(var toDosList: List<Todo>)
 //            it.findNavController().navigate(toUptadeScreen)
 //        }
 
-//        design.imageViewDelete.setOnClickListener {
-//            Snackbar.make(it,"Do you want to delete ${toDo.name} ?", Snackbar.LENGTH_SHORT)
-//                .setAction("YES") {
-//                    viewModel.delete(toDo.id)
-//                }.show()
-//        }
+        design.imageViewDelete.setOnClickListener {
+            Snackbar.make(it,"Do you want to delete ${toDo.name} ?", Snackbar.LENGTH_SHORT)
+                .setAction("YES") {
+                   onDeleteClick(toDo)
+                }.show()
+        }
 
     }
 
     override fun getItemCount(): Int {
         return toDosList.size
     }
+
+
 }
+
+
