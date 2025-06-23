@@ -1,4 +1,4 @@
-package com.gundogar.todoappmeg
+package com.gundogar.todoappmeg.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

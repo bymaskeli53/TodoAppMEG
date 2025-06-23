@@ -1,5 +1,6 @@
-package com.gundogar.todoappmeg
+package com.gundogar.todoappmeg.domain
 
+import com.gundogar.todoappmeg.data.Todo
 import kotlinx.coroutines.flow.Flow
 
 interface TodosRepository {

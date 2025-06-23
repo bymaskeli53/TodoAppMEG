@@ -1,5 +1,7 @@
-package com.gundogar.todoappmeg
+package com.gundogar.todoappmeg.di
 
+import com.gundogar.todoappmeg.domain.TodosRepository
+import com.gundogar.todoappmeg.data.TodosRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

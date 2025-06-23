@@ -1,10 +1,10 @@
-package com.gundogar.todoappmeg
+package com.gundogar.todoappmeg.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -12,6 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.gundogar.todoappmeg.databinding.FragmentHomeBinding
+import com.gundogar.todoappmeg.ui.viewmodel.HomeViewModel
+import com.gundogar.todoappmeg.ui.adapter.TodoAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -38,7 +40,7 @@ class HomeFragment : Fragment() {
                 viewModel.searchResults.collect { todos ->
                     binding.recyclerViewToDos.adapter = TodoAdapter(todos, onDeleteClick = {
                         viewModel.deleteTodo(it)
-                    }){
+                    }) {
                         val action = HomeFragmentDirections.actionHomeFragmentToUpdateFragment(it)
                         findNavController().navigate(action)
                     }
@@ -47,7 +49,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextChange(newText: String): Boolean {
                 viewModel.setSearchQuery(newText)
                 return true

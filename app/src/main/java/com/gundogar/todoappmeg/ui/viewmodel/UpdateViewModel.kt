@@ -1,7 +1,8 @@
-package com.gundogar.todoappmeg
+package com.gundogar.todoappmeg.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gundogar.todoappmeg.domain.TodosRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

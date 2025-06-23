@@ -1,8 +1,9 @@
-package com.gundogar.todoappmeg
+package com.gundogar.todoappmeg.di
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room
+import com.gundogar.todoappmeg.data.TodoDao
+import com.gundogar.todoappmeg.data.TodoDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

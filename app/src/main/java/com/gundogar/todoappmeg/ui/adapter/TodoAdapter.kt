@@ -1,9 +1,10 @@
-package com.gundogar.todoappmeg
+package com.gundogar.todoappmeg.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.gundogar.todoappmeg.data.Todo
 import com.gundogar.todoappmeg.databinding.ItemTodoBinding
 
 class TodoAdapter(
@@ -44,5 +45,3 @@ class TodoAdapter(
 
 
 }
-
-

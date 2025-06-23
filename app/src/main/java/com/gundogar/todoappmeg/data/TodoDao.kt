@@ -1,4 +1,4 @@
-package com.gundogar.todoappmeg
+package com.gundogar.todoappmeg.data
 
 import androidx.room.Dao
 import androidx.room.Delete

@@ -1,5 +1,6 @@
-package com.gundogar.todoappmeg
+package com.gundogar.todoappmeg.data
 
+import com.gundogar.todoappmeg.domain.TodosRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
