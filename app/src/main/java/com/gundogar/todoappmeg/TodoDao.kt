@@ -24,7 +24,7 @@ interface TodoDao {
     suspend fun delete(toDo: Todo)
 
     @Query("SELECT * FROM toDos WHERE name LIKE '%' || :searchText || '%'")
-    suspend fun search(searchText: String): List<Todo>
+    fun search(searchText: String): Flow<List<Todo>>
 
 
 }

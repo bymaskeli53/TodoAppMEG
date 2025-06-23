@@ -8,8 +8,8 @@ class TodosRepositoryImpl @Inject constructor(val todoDao: TodoDao) : TodosRepos
         todoDao.insertTodo(Todo(name = name))
     }
 
-    override suspend fun update(name: String) {
-        todoDao.updateTodo(Todo(name = name))
+    override suspend fun update(id: Int,name: String) {
+        todoDao.updateTodo(Todo(id = id, name = name))
     }
 
     override suspend fun delete(todo: Todo) {
@@ -20,7 +20,7 @@ class TodosRepositoryImpl @Inject constructor(val todoDao: TodoDao) : TodosRepos
         return todoDao.getTodos()
     }
 
-    override suspend fun search(query: String): List<Todo> {
+    override  fun search(query: String): Flow<List<Todo>> {
         return todoDao.search(query)
     }
 }

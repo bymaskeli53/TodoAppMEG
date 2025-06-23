@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -34,18 +35,36 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.todos.collect { todos ->
-                    binding.recyclerViewToDos.adapter = TodoAdapter(todos){
+                viewModel.searchResults.collect { todos ->
+                    binding.recyclerViewToDos.adapter = TodoAdapter(todos, onDeleteClick = {
                         viewModel.deleteTodo(it)
+                    }){
+                        val action = HomeFragmentDirections.actionHomeFragmentToUpdateFragment(it)
+                        findNavController().navigate(action)
                     }
                 }
 
             }
         }
+
+        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextChange(newText: String): Boolean {
+                viewModel.setSearchQuery(newText)
+                return true
+            }
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                viewModel.setSearchQuery(query)
+                return true
+            }
+        })
+
         binding.fab.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToSaveFragment()
             findNavController().navigate(action)
         }
+
+
 
     }
 

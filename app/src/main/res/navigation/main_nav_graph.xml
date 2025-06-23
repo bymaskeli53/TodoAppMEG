@@ -13,10 +13,22 @@
         <action
             android:id="@+id/action_homeFragment_to_saveFragment"
             app:destination="@id/saveFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
     </fragment>
     <fragment
         android:id="@+id/saveFragment"
         android:name="com.gundogar.todoappmeg.SaveFragment"
         android:label="fragment_save"
         tools:layout="@layout/fragment_save" />
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.gundogar.todoappmeg.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <argument
+            android:name="todo"
+            app:argType="com.gundogar.todoappmeg.Todo" />
+    </fragment>
 </navigation>
